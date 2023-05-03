@@ -1,18 +1,4 @@
-#include <opencv2/opencv.hpp>
 
-class RectangleDrawer {
-public:
-    RectangleDrawer(int x, int y, int width, int height, int thickness, cv::Scalar color)
-        : m_x(x), m_y(y), m_width(width), m_height(height), m_thickness(thickness), m_color(color) {}
-
-    void dessiner(cv::Mat& image) const {
-        cv::rectangle(image, cv::Rect(m_x, m_y, m_width, m_height), m_color, m_thickness);
-    }
-
-private:
-    int m_x, m_y, m_width, m_height, m_thickness;
-    cv::Scalar m_color;
-};
 
 int main() {
     cv::Mat image(400, 400, CV_8UC3, cv::Scalar(255, 255, 255));
