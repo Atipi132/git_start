@@ -1,17 +1,40 @@
+#include <opencv2/opencv.hpp>
 
+class RectangleDrawer {
+public:
+    RectangleDrawer(const std::string& windowName, int width, int height)
+        : windowName_(windowName), width_(width), height_(height)
+    {
+        cv::namedWindow(windowName_, cv::WINDOW_NORMAL);
+        cv::resizeWindow(windowName_, width_, height_);
+        cv::waitKey(1);
+    }
 
-int main() {
-    cv::Mat image(400, 400, CV_8UC3, cv::Scalar(255, 255, 255));
-    cv::namedWindow("Rectangles");
+    void drawRectangle(int x, int y, int width, int height, int thickness, const cv::Scalar& color)
+    {
+        cv::Rect rect(x, y, width, height);
+        cv::rectangle(image_, rect, color, thickness);
+    }
 
-    RectangleDrawer rect1(50, 50, 100, 150, 5, cv::Scalar(255, 0, 0));
-    rect1.dessiner(image);
+    void showImage()
+    {
+        cv::imshow(windowName_, image_);
+        cv::waitKey(0);
+    }
 
-    RectangleDrawer rect2(200, 100, 80, 120, 3, cv::Scalar(0, 255, 0));
-    rect2.dessiner(image);
+private:
+    std::string windowName_;
+    int width_;
+    int height_;
+    cv::Mat image_ = cv::Mat::zeros(height_, width_, CV_8UC3);
+};
 
-    cv::imshow("Rectangles", image);
-    cv::waitKey(0);
+int main()
+{
+    RectangleDrawer drawer("Rectangles", 800, 600);
+    drawer.drawRectangle(100, 100, 200, 150, 2, cv::Scalar(0, 255, 0));
+    drawer.drawRectangle(400, 300, 100, 100, -1, cv::Scalar(0, 0, 255));
+    drawer.showImage();
 
     return 0;
 }
