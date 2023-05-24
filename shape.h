@@ -9,6 +9,7 @@ public:
     }
 
     virtual void draw(cv::Mat& image) = 0;
+    virtual void update() = 0;
 
 protected:
     std::string windowName_;
