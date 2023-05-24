@@ -16,15 +16,31 @@ int main() {
     Shape* triangle = new TriangleDrawer(windowName, 200, 100, 300, 250, 400, 100, 2, 0, 255, 0);
     Shape* line = new LineDrawer(windowName, 100, 400, 600, 400, 2, 255, 255, 0);
 
-    // Dessiner les formes sur l'image
-    rectangle->draw(image);
-    circle->draw(image);
-    triangle->draw(image);
-    line->draw(image);
+    // Variables pour l'animation
+    bool isAnimating = true;
 
-    // Afficher l'image dans la fenêtre
-    cv::imshow(windowName, image);
-    cv::waitKey(0);
+    // Boucle principale de l'animation
+    while (isAnimating) {
+        // Dessiner les formes sur l'image avec les coordonnées actuelles
+        rectangle->draw(image);
+        circle->draw(image);
+        triangle->draw(image);
+        line->draw(image);
+
+        // Mettre à jour les coordonnées des formes avec les nouvelles valeurs
+        rectangle->update();
+        circle->update();
+        triangle->update();
+        line->update();
+
+        // Afficher l'image dans la fenêtre
+        cv::imshow(windowName, image);
+
+        // Attendre 10 millisecondes et vérifier si l'utilisateur appuie sur une touche pour quitter
+        if (cv::waitKey(10) != -1) {
+            isAnimating = false;
+        }
+    }
 
     // Nettoyage
     cv::destroyWindow(windowName);
