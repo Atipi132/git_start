@@ -12,10 +12,17 @@ public:
         cv::rectangle(image, cv::Point(x_, y_), cv::Point(x_ + width_, y_ + height_), color_, thickness_);
     }
 
+    void update() override {
+        // Mettre à jour les coordonnées du rectangle en fonction des paramètres d'animation
+        x_ += speedX_;
+        y_ += speedY_;
+    }
+
 private:
     int width_;
     int height_;
     int x_;
     int y_;
+    int speedX_ = 2;
+    int speedY_ = 1;
 };
-
