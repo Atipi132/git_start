@@ -11,9 +11,19 @@ public:
         cv::line(image, cv::Point(x1_, y1_), cv::Point(x2_, y2_), color_, thickness_);
     }
 
+    void update() override {
+        // Mettre à jour les coordonnées de la ligne en fonction des paramètres d'animation
+        x1_ += speedX_;
+        y1_ += speedY_;
+        x2_ += speedX_;
+        y2_ += speedY_;
+    }
+
 private:
     int x1_;
     int y1_;
     int x2_;
     int y2_;
+    int speedX_ = 2;
+    int speedY_ = 1;
 };
