@@ -4,6 +4,7 @@ But:
 >>Dessiner un cercle
 >>Dessiner un triangle
 >>Dessiner une ligne
+>>Animer les formes
 
 
 Principe SOLID appliqué 
