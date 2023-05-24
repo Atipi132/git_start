@@ -1,6 +1,3 @@
-#pragma once
-#include "shape.h"
-
 class LineDrawer : public Shape {
 public:
     LineDrawer(const std::string& windowName, int x1, int y1, int x2, int y2,
