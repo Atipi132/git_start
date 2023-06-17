@@ -1,5 +1,4 @@
 #pragma once
-
 #include <opencv2/opencv.hpp>
 #include "shape.h"
 
@@ -17,7 +16,7 @@ public:
     // Redéfinition de la fonction de dessin pour le cercle.
     // Dessine un cercle en utilisant les coordonnées du centre, le rayon, la couleur et l'épaisseur spécifiés.
 	void draw(cv::Mat& image) override;
-	void update(); // Mettre à jour les coordonnées du cercle en fonction des paramètres d'animation
+	void update(int x, int y, cv::Mat& image) override; // Mettre à jour les coordonnées du cercle en fonction des paramètres d'animation
 
 
 private:
