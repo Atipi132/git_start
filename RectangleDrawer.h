@@ -9,6 +9,7 @@ public:
         int thickness, int r, int g, int b);
 
     void draw(cv::Mat& image) override;
+    void update(int x, int y, cv::Mat& image) override; // Mettre à jour les coordonnées du cercle en fonction des paramètres d'animation
 
 private:
     int width_;
