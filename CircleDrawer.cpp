@@ -10,7 +10,9 @@ void CircleDrawer::draw(cv::Mat& image)
     cv::circle(image, cv::Point(centerX_, centerY_), radius_, color_, thickness_);
 }
 
-void CircleDrawer::update(){     // Mettre à jour les coordonnées du cercle en fonction des paramètres d'animation
-    centerX_ += 2;
-    centerY_ += 1;
+void CircleDrawer::update(int x, int y, cv::Mat& image) {     // Mettre à jour les coordonnées du cercle en fonction des paramètres d'animation
+    cv::circle(image, cv::Point(centerX_, centerY_), radius_, cv::Scalar(255, 255, 255), thickness_);
+    centerX_ += x;
+    centerY_ += y;
+    draw(image);
 }
